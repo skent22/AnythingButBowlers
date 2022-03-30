@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Bowling League";
+}
+
+@model List<Bowler>
+
+<div class="d-flex flex-column justify-content-center">
+
+
+    <h1 class="text-center m-2">Bowlers</h1>
+    <table class="table table-bordered table-hover table-striped">
+
+        <tr class="text-center">
+            <th>
+                First Name
+            </th>
+            <th>
+                Middle Initial
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Zip
+            </th>
+            <th>
+                Phone Number
+            </th>
+        </tr>
+
+        @foreach (Bowler b in ViewBag.AllBowlers)
+        {
+            <tr class="text-center">
+
+                <td>
+                    @b.BowlerFirstName
+                </td>
+                
+                <td>
+                    @b.BowlerMiddleInit
+                </td>
+
+                <td>
+                    @b.BowlerLastName
+                </td>
+
+                <td>
+                    @b.BowlerAddress
+                </td>
+
+                <td>
+                    @b.BowlerCity
+                </td>
+
+                <td>
+                    @b.BowlerState
+                </td>
+
+                <td>
+                    @b.BowlerZip
+                </td>
+
+                <td>
+                    @b.BowlerPhoneNumber
+                </td>
+
+                <td>
+                    <a asp-controller="Home" asp-action="EditBowler" asp-route-bowlerId="@b.BowlerID" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="DeleteBowler" asp-route-bowlerId="@b.BowlerID" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
